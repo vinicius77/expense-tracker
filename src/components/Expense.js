@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 const Expense = () => {
+  const { transations } = useContext(GlobalContext);
   return (
     <div className="inc-exp-container">
       <div>
