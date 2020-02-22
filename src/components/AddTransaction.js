@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../context/GlobalState";
 
 const AddTransaction = () => {
   const [text, setText] = useState("Text");
   const [amount, setAmount] = useState(0);
+  const { createTransaction } = useContext(GlobalContext);
 
   const onChangeTextHandler = event => {
     event.preventDefault();
@@ -14,10 +16,22 @@ const AddTransaction = () => {
     setAmount(event.target.value);
   };
 
+  const onSubmitHandler = event => {
+    event.preventDefault();
+
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000),
+      text,
+      amount: +amount
+    };
+
+    createTransaction(newTransaction);
+  };
+
   return (
     <React.Fragment>
       <h3>Add New Transaction</h3>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
           <input
