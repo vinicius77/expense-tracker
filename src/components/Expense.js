@@ -14,7 +14,7 @@ const Expense = () => {
   const expense = (
     amounts
       .filter(amount => amount < 0)
-      .reduce((total, amount) => (total += amount)) * -1
+      .reduce((total, amount) => (total += amount), 0) * -1
   ).toFixed(2);
 
   return (

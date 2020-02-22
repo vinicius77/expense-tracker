@@ -1,12 +1,7 @@
 import React, { createContext, useReducer } from "react";
 
 const initialState = {
-  transactions: [
-    { id: 1, text: "Graphic", amount: 20 },
-    { id: 2, text: "Computer", amount: -120 },
-    { id: 3, text: "Car", amount: 400 },
-    { id: 4, text: "Games", amount: -54 }
-  ]
+  transactions: []
 };
 
 const reducer = (state, action) => {
@@ -24,7 +19,7 @@ const reducer = (state, action) => {
         transactions: [action.payload, ...state.transactions]
       };
     default:
-      return state;
+      return initialState;
   }
 };
 
